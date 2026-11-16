@@ -36,6 +36,8 @@ Next time you want to start it yourself: `cd my-react-app` then `npm run dev`.
 
 Question 1: what port is your app on? What do you see on the page?
 
+Answer: My app is on port 5173. I see the Vite starter page with the Vite and React logos. It has a "Get started" heading and a count button.
+
 3. In the second terminal, look at what Vite made:
 
 ```bash
@@ -45,6 +47,8 @@ ls src
 ```
 
 Question 2: which file in `src` is your app, and which file puts it on the page? (Look at the last lines of `index.html` and `src/main.jsx`.)
+
+Answer: `App.jsx` is my app. `main.jsx` puts it on the page. It renders `<App />` into the `root` div in `index.html`.
 
 Commit: `Part 1: Vite app`
 
@@ -107,6 +111,8 @@ TODO: put your own name in. Refresh the page a few times.
 
 Question 3: what do the `{ }` do inside the JSX? What would show up if you took them away from `{name}`?
 
+Answer: The `{ }` let me use JavaScript inside JSX. So `{name}` shows my name. Without them it would just say "Hello, name!".
+
 8. A list. Under the `<p>` line, add:
 
 ```jsx
@@ -120,6 +126,8 @@ Question 3: what do the `{ }` do inside the JSX? What would show up if you took 
 TODO: change the three things to your own. The list turns blue because of the `.my-list` style in `App.css`.
 
 Question 4: why is it `className` and not `class` like in HTML?
+
+Answer: JSX is JavaScript. `class` is already a word JavaScript uses. So React uses `className` instead.
 
 9. A style written in JavaScript. Above the `return`, add:
 
@@ -139,6 +147,8 @@ and change the `<h1>` line to:
 TODO: pick your own color and size.
 
 Question 5: in CSS it's `font-size`. Why is it `fontSize` here?
+
+Answer: The style is a JavaScript object. Names in JavaScript can't have a dash. So it's written as `fontSize`.
 
 Commit: `Part 3: JSX`
 
@@ -167,6 +177,8 @@ and change the `<h1>` line to:
 ```
 
 Question 6: why does the `if` go up here and not inside the `{ }` in the JSX? (Slides: expressions vs. statements.)
+
+Answer: The `{ }` can only hold something that gives back a value. An `if` doesn't give back a value. So it goes above the `return` and saves the result in `greeting`.
 
 11. Your own component. Make a new file `src/List.jsx` and paste this:
 
@@ -201,6 +213,8 @@ Then delete the whole `<ul>` ... `</ul>` from `App.jsx` and put this in its plac
 The page should look the same as before. Your list now lives in its own component.
 
 Question 7: look at `src/main.jsx`. What is the only component it puts on the page? How does your list get there?
+
+Answer: It only puts `<App />` on the page. `App` imports `List` and uses `<List />` inside it. So the list shows up as part of `App`.
 
 Your whole `App.jsx` should look like this now:
 
@@ -277,9 +291,13 @@ Vite makes a `dist` folder: an `index.html` and an `assets` folder. That's your 
 
 (Optional: `npm run preview` shows the built version at http://localhost:4173. Ctrl+C when you're done.)
 
-Question 8: how big is the `.js` file in `dist/assets`? Why so big for a page this small? 
+Question 8: how big is the `.js` file in `dist/assets`? Why so big for a page this small?
+
+Answer: It is about 220 kB. It's big because all of React is packed into that file too, not just my code. 
 
 16. Copy it to your server. Your jokes API lives in your home folder because Node (pm2) has to run it. Your React build is just files, so it goes where nginx hands out files: `/var/www/html`. How much disk space do you have on your server? (this is important to keep an eye on in general)
+
+Answer: My server has a 19G disk. 15G is used and 3.8G is free.
 
 There is more than one way to organize your website. Pick one of these two:
 - Way A: your React app is your whole site, at `http://your-server-address`
@@ -342,6 +360,8 @@ If you change the folder name, use the same name in `--base=/yourname/`, in the 
 Then open `http://your-server-address/api/random`. Your jokes API from Lab 6 should still answer.
 
 Question 9: both of those come from the same server on port 80. How does nginx know which one to send you?
+
+Answer: nginx looks at the path in the URL. `/react/` gets the files from `/var/www/html/react`. `/api/` gets sent to my jokes app on port 3000.
 
 Commit: `Part 5: build and deploy`
 

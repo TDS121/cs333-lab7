@@ -1,0 +1,19 @@
+.my-list {
+  color: steelblue;
+  font-size: 24px;
+}
+
+body {
+  background-color: #fdf6e3;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+.my-list {
+  list-style: none;
+  padding: 0;
+}
+
+.my-list li {
+  margin: 8px 0;
+}
